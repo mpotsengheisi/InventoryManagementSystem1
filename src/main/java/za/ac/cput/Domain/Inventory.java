@@ -8,7 +8,7 @@ public class Inventory {
     private int quantity;
     private int reorderLevel;
 
-    protected Inventory() {}
+    private Inventory() {}
 
     private Inventory(Builder builder) {
         this.productId = builder.productId;
@@ -28,6 +28,16 @@ public class Inventory {
     }
     public int getReorderLevel() {
         return reorderLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "id=" + id +
+                ", productId=" + productId +
+                ", quantity=" + quantity +
+                ", reorderLevel=" + reorderLevel +
+                '}';
     }
 
     // Builder class
