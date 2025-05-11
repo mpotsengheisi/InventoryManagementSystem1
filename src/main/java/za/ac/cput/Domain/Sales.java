@@ -1,24 +1,22 @@
 package za.ac.cput.Domain;
 
-
 import java.time.LocalDateTime;
 
-public class Sale {
+public class Sales {
 
     private Long id;
-
     private Long productId;
     private int quantity;
     private String transactionType;
     private LocalDateTime transactionDate;
 
-    private Sale() {
+    private Sales() {
 
     }
 
     @Override
     public String toString() {
-        return "Sale{" +
+        return "Sales{" +
                 "id=" + id +
                 ", productId=" + productId +
                 ", quantity=" + quantity +
@@ -27,7 +25,7 @@ public class Sale {
                 '}';
     }
 
-    private Sale(Builder builder) {
+    private Sales (Builder builder) {
         this.productId = builder.productId;
         this.quantity = builder.quantity;
         this.transactionType = builder.transactionType;
@@ -75,14 +73,14 @@ public class Sale {
             this.transactionDate = transactionDate;
             return this;
         }
-        public Sale build() {
+        public Sales build() {
             if (productId == null) {
                 throw new IllegalArgumentException("Product ID cannot be null");
             }
             if (transactionType == null || transactionType.trim().isEmpty()) {
                 throw new IllegalArgumentException("Transaction type cannot be null or empty");
             }
-            return new Sale(this);
+            return new Sales (this);
         }
     }
 }
