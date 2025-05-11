@@ -7,16 +7,22 @@ import java.util.List;
 public class Order {
 
     private Long id;
-
     private Long customerId;
-
     private List<Long> productIds;
-
     private String status;
 
 
-    protected Order() {
-        // JPA needs a no-argument constructor.
+    private Order() {
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", productIds=" + productIds +
+                ", status='" + status + '\'' +
+                '}';
     }
 
     // Private constructor that accepts a builder
