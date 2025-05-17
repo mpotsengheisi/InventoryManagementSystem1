@@ -2,44 +2,67 @@ package za.ac.cput.Domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
-// "order" is a reserved keyword in many databases so we use "orders"
+/*
+Author: Luhlumr Iarlaith Keamogetse Radebe(222804424)
+date:
+ */
+
 public class Order {
 
-    private Long id;
-    private Long customerId;
+    private String orderId;
+    private String customerId;
+    private Date orderDate;
+    private List<Inventory> itemsOrdered;
+    private double amountPaid;
+    private String orderItems;
     private List<Long> productIds;
     private String status;
+    private String deliveryAddress;
+    private String paymentMethod;
 
-
+    // Private constructor
     private Order() {
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", customerId=" + customerId +
-                ", productIds=" + productIds +
-                ", status='" + status + '\'' +
-                '}';
-    }
-
-    // Private constructor that accepts a builder
+    // Constructor used by Builder
     private Order(Builder builder) {
+        this.orderId = builder.orderId;
         this.customerId = builder.customerId;
+        this.orderDate = builder.orderDate;
+        this.itemsOrdered = builder.itemsOrdered;
+        this.amountPaid = builder.amountPaid;
+        this.orderItems = builder.orderItems;
         this.productIds = builder.productIds;
         this.status = builder.status;
+        this.deliveryAddress = builder.deliveryAddress;
+        this.paymentMethod = builder.paymentMethod;
     }
 
-    // Getters for accessing fields
-
-    public Long getId() {
-        return id;
+    // Getters
+    public String getOrderId() {
+        return orderId;
     }
 
-    public Long getCustomerId() {
+    public String getCustomerId() {
         return customerId;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public List<Inventory> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
+    public double getAmountPaid() {
+        return amountPaid;
+    }
+
+    public String getOrderItems() {
+        return orderItems;
     }
 
     public List<Long> getProductIds() {
@@ -50,27 +73,76 @@ public class Order {
         return status;
     }
 
-    // Optionally, setters are available if you need them for any reason.
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public String getDeliveryAddress() {
+        return deliveryAddress;
     }
 
-    public void setProductIds(List<Long> productIds) {
-        this.productIds = productIds;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    // Setters (optional, if needed)
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    // Builder Pattern implementation for fluent object construction
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", orderDate=" + orderDate +
+                ", itemsOrdered=" + itemsOrdered +
+                ", amountPaid=" + amountPaid +
+                ", orderItems='" + orderItems + '\'' +
+                ", productIds=" + productIds +
+                ", status='" + status + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                '}';
+    }
+
+    // Builder class
     public static class Builder {
-        private Long customerId;
+        private String orderId;
+        private String customerId;
+        private Date orderDate = new Date(); // default to now
+        private List<Inventory> itemsOrdered = new ArrayList<>();
+        private double amountPaid;
+        private String orderItems;
         private List<Long> productIds = new ArrayList<>();
-        private String status = "NEW"; // default status
+        private String status = "NEW"; // default
+        private String deliveryAddress;
+        private String paymentMethod;
 
-        public Builder withCustomerId(Long customerId) {
+        public Builder withOrderId(String orderId) {
+            this.orderId = orderId;
+            return this;
+        }
+
+        public Builder withCustomerId(String customerId) {
             this.customerId = customerId;
+            return this;
+        }
+
+        public Builder withOrderDate(Date orderDate) {
+            this.orderDate = orderDate;
+            return this;
+        }
+
+        public Builder withItemsOrdered(List<Inventory> itemsOrdered) {
+            this.itemsOrdered = itemsOrdered;
+            return this;
+        }
+
+        public Builder withAmountPaid(double amountPaid) {
+            this.amountPaid = amountPaid;
+            return this;
+        }
+
+        public Builder withOrderItems(String orderItems) {
+            this.orderItems = orderItems;
             return this;
         }
 
@@ -79,7 +151,6 @@ public class Order {
             return this;
         }
 
-        // Adds a single product ID to the list
         public Builder addProductId(Long productId) {
             this.productIds.add(productId);
             return this;
@@ -90,15 +161,18 @@ public class Order {
             return this;
         }
 
+        public Builder withDeliveryAddress(String deliveryAddress) {
+            this.deliveryAddress = deliveryAddress;
+            return this;
+        }
+
+        public Builder withPaymentMethod(String paymentMethod) {
+            this.paymentMethod = paymentMethod;
+            return this;
+        }
+
         public Order build() {
-            if (customerId == null) {
-                throw new IllegalArgumentException("Customer ID cannot be null");
-            }
-            if (productIds == null || productIds.isEmpty()) {
-                throw new IllegalArgumentException("At least one product ID is required");
-            }
             return new Order(this);
         }
     }
 }
-
