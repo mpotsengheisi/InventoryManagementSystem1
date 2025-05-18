@@ -1,5 +1,10 @@
 package za.ac.cput.Factory;
 
+/*
+Author: Luhlume Iarlaith Keamogetse Radebe (222804424)
+Date:
+ */
+
 import za.ac.cput.Domain.Inventory;
 
 public class InventoryFactory {
@@ -7,6 +12,7 @@ public class InventoryFactory {
         if (inventoryId == null || inventoryId.isEmpty() || productId == null || productId.isEmpty() || productName == null || productName.isEmpty() || price<0 || category == null || category.isEmpty() || supplier.isEmpty() || reason.isEmpty()){
             return null;
         }
+
 
         return new Inventory.Builder()
                 .setInventoryId(inventoryId)

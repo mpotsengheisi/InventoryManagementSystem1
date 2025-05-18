@@ -1,5 +1,9 @@
 package za.ac.cput.Domain;
 
+/*
+Author: Luhlume Iarlaith Keamogetse Radebe (222804424)
+Date:
+ */
 
 public class Inventory {
 
@@ -119,6 +123,7 @@ public class Inventory {
             this.inventoryId = inventoryId;
             return this;
         }
+
 
         public Inventory build() {
             return new Inventory(this);
