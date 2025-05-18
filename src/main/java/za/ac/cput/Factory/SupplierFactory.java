@@ -9,7 +9,7 @@ import za.ac.cput.Util.Helper;
 
 public class SupplierFactory {
     public static Supplier createSupplier(String supplierId, String supplierName, String contactDetails, String address) {
-        if (!Helper.isValidSupplierData(supplierId, supplierName, contactDetails, address)) {
+        if (Helper.isNullOrEmpty(supplierId) || Helper.isNullOrEmpty(supplierName) || Helper.isNullOrEmpty(contactDetails)|| Helper.isNullOrEmpty(address)) {
             return null;
         }
 
@@ -21,4 +21,3 @@ public class SupplierFactory {
                 .build();
     }
 }
-
