@@ -116,57 +116,57 @@ public class Order {
         private String deliveryAddress;
         private String paymentMethod;
 
-        public Builder withOrderId(String orderId) {
+        public Builder setOrderId(String orderId) {
             this.orderId = orderId;
             return this;
         }
 
-        public Builder withCustomerId(String customerId) {
+        public Builder setCustomerId(String customerId) {
             this.customerId = customerId;
             return this;
         }
 
-        public Builder withOrderDate(Date orderDate) {
+        public Builder setOrderDate(Date orderDate) {
             this.orderDate = orderDate;
             return this;
         }
 
-        public Builder withItemsOrdered(List<Inventory> itemsOrdered) {
+        public Builder setItemsOrdered(List<Inventory> itemsOrdered) {
             this.itemsOrdered = itemsOrdered;
             return this;
         }
 
-        public Builder withAmountPaid(double amountPaid) {
+        public Builder setAmountPaid(double amountPaid) {
             this.amountPaid = amountPaid;
             return this;
         }
 
-        public Builder withOrderItems(String orderItems) {
+        public Builder setOrderItems(String orderItems) {
             this.orderItems = orderItems;
             return this;
         }
 
-        public Builder withProductIds(List<Long> productIds) {
+        public Builder setProductIds(List<Long> productIds) {
             this.productIds = productIds;
             return this;
         }
 
-        public Builder addProductId(Long productId) {
+        public Builder setProductId(Long productId) {
             this.productIds.add(productId);
             return this;
         }
 
-        public Builder withStatus(String status) {
+        public Builder setStatus(String status) {
             this.status = status;
             return this;
         }
 
-        public Builder withDeliveryAddress(String deliveryAddress) {
+        public Builder setDeliveryAddress(String deliveryAddress) {
             this.deliveryAddress = deliveryAddress;
             return this;
         }
 
-        public Builder withPaymentMethod(String paymentMethod) {
+        public Builder setPaymentMethod(String paymentMethod) {
             this.paymentMethod = paymentMethod;
             return this;
         }

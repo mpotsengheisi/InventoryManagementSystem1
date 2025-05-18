@@ -83,39 +83,39 @@ public class Inventory {
         private int reorderLevel;
         private String reason;
 
-        public Builder withProductId(String productId) {
+        public Builder setProductId(String productId) {
             this.productId = productId;
             return this;
         }
-        public Builder withProductName(String productName) {
+        public Builder setProductName(String productName) {
             this.productName = productName;
             return this;
         }
-        public Builder withPrice(double price) {
+        public Builder setPrice(double price) {
             this.price = price;
             return this;
         }
-        public Builder withCategory(String category) {
+        public Builder setCategory(String category) {
             this.category = category;
             return this;
         }
-        public Builder withSupplier(String supplier) {
+        public Builder setSupplier(String supplier) {
             this.supplier = supplier;
             return this;
         }
-        public Builder withQuantity(int quantity) {
+        public Builder setQuantity(int quantity) {
             this.quantity = quantity;
             return this;
         }
-        public Builder withReorderLevel(int reorderLevel) {
+        public Builder setReorderLevel(int reorderLevel) {
             this.reorderLevel = reorderLevel;
             return this;
         }
-        public Builder withReason(String reason) {
+        public Builder setReason(String reason) {
             this.reason = reason;
             return this;
         }
-        public Builder withInventoryId(String inventoryId) {
+        public Builder setInventoryId(String inventoryId) {
             this.inventoryId = inventoryId;
             return this;
         }
