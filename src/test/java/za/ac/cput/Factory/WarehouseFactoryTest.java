@@ -11,8 +11,8 @@ public class WarehouseFactoryTest {
 
     @Test
    public void createWarehouse() {
-        Warehouse warehouse = WarehouseFactory.createWarehouse("123","Z","Woodstock");
-        System.out.println("Woodstock" +warehouse);
+        Warehouse warehouse = WarehouseFactory.createWarehouse("Z100","Adderly Warehouse","Adderly Street");
+        System.out.println("Adderly Street" +warehouse);
         assertNotNull(warehouse.getWarehouseId());
     }
 }
