@@ -5,6 +5,7 @@ Author: Ahluma Nkqayi (222512571)
 Date: 18 May 2025
  */
 import za.ac.cput.Domain.Category;
+import za.ac.cput.Util.Helper;
 
 public class CategoryFactory {
     public static Category createCategory(String categoryId, String description) {
