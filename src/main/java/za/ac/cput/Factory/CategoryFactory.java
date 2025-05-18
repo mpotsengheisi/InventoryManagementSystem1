@@ -1,4 +1,6 @@
 package za.ac.cput.Factory;
+
+import za.ac.cput.Util.Helper;
 /*Category.java
 Category Factory class
 Author: Ahluma Nkqayi (222512571)
@@ -8,7 +10,7 @@ import za.ac.cput.Domain.Category;
 
 public class CategoryFactory {
     public static Category createCategory(String categoryId, String description) {
-        if (!Helper.isValidCategoryData(categoryId, description)) {
+        if (Helper.isNullOrEmpty(categoryId) || Helper.isNullOrEmpty(description)) {
             return null;
         }
 
@@ -18,6 +20,3 @@ public class CategoryFactory {
                 .build();
     }
 }
-
-
-
