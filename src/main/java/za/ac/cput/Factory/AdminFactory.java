@@ -1,6 +1,6 @@
 package za.ac.cput.Factory;
 /*
-Author: Ryan Paledi  (230969429)
+Author: Ryan Paledi Kgapjane (230969429)
 Date:
  */
 import za.ac.cput.Domain.Admin;
