@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /*
  Author: Ryan Kgapjanee Paledi  (230969429)
- Date:
+ Date: 18 may 2025
 */
 
 public class CustomerFactoryTest {
