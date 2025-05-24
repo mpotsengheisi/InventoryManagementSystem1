@@ -19,3 +19,4 @@ public interface IProductRepository extends IRepository<Product, String> {
     Set<Product> getProductsBySupplier(String supplierId);
 }
 
+

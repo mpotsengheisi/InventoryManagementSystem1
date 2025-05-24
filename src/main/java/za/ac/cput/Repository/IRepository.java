@@ -10,3 +10,4 @@ public interface IRepository<T, ID> {
     Set<T> getAll();
 }
 
+
