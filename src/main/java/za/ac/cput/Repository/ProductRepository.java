@@ -2,19 +2,28 @@ package za.ac.cput.Repository;
 
 import za.ac.cput.Domain.Product;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+/*
+ * ProductRepository.java
+ * Repository implementation for 'Product'
+ * Author: Mpotseng Heisi (222309792)
+ * Date: 25 May 2025
+ */
 public class ProductRepository implements IProductRepository {
 
+
     private static ProductRepository repository = null;
-    private Set<Product> productDB;
+    private List<Product> productList;
+
 
     private ProductRepository() {
-        this.productDB = new HashSet<>();
+        productList = new ArrayList<>();
     }
 
-    public static ProductRepository getRepository() {
+
+    public static ProductRepository getInstance() {
         if (repository == null) {
             repository = new ProductRepository();
         }
@@ -23,67 +32,75 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product create(Product product) {
-        if (productDB.add(product)) {
-            return product;
+        if (product == null || product.getProductId() == null) {
+            return null;
         }
-        return null;
+
+        if (exists(product.getProductId())) {
+            return null;
+        }
+
+        productList.add(product);
+        return product;
     }
 
     @Override
     public Product read(String productId) {
-        return productDB.stream()
-                .filter(product -> product.getProductId().equals(productId))
-                .findFirst()
-                .orElse(null);
-    }
-
-    @Override
-    public Product update(Product product) {
-        Product existingProduct = read(product.getProductId());
-        if (existingProduct != null) {
-            productDB.remove(existingProduct);
-            productDB.add(product);
-            return product;
+        for (Product product : productList) {
+            if (product.getProductId().equals(productId)) {
+                return product;
+            }
         }
         return null;
     }
 
+    @Override
+    public Product update(Product product) {
+        if (product == null) {
+            return null;
+        }
 
+        int index = findIndexByProductId(product.getProductId());
+
+        if (index == -1) {
+            return null;
+        }
+
+        productList.set(index, product);
+        return product;
+    }
 
     @Override
     public boolean delete(String productId) {
-        Product product = read(productId);
-        if (product != null) {
-            productDB.remove(product);
-            return true;
+        int index = findIndexByProductId(productId);
+
+        if (index == -1) {
+            return false;
         }
-        return false;
+
+        productList.remove(index);
+        return true;
     }
 
     @Override
-    public Set<Product> getAll() {
-        return productDB;
+    public List<Product> getAll() {
+        return new ArrayList<>(productList);
     }
 
-    @Override
-    public Set<Product> getProductsByCategory(String categoryId) {
-        Set<Product> result = new HashSet<>();
-        for (Product product : productDB) {
-            if (product.getCategoryId().equalsIgnoreCase(categoryId)) {
-                result.add(product);
+
+    private int findIndexByProductId(String productId) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getProductId().equals(productId)) {
+                return i;
             }
         }
-        return result;
+        return -1;
     }
 
-    @Override
-    public Set<Product> getProductsBySupplier(String supplierId) {
-        Set<Product> result = new HashSet<>();
-        for (Product product : productDB) {
-            if (product.getSupplierId().equalsIgnoreCase(supplierId)) {
-                result.add(product);
-            }
-        }
-        return result;
+
+    private boolean exists(String productId) {
+        return findIndexByProductId(productId) != -1;
     }
+
+
 }
