@@ -1,16 +1,25 @@
 package za.ac.cput.Domain;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+
+
 
 /*
 Author: Luhlumr Iarlaith Keamogetse Radebe(222804424)
 date:
  */
 
+@Entity
+@Table(name = "orders")
 public class Order {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String orderId;
     private String customerId;
     private Date orderDate;
@@ -39,6 +48,8 @@ public class Order {
         this.deliveryAddress = builder.deliveryAddress;
         this.paymentMethod = builder.paymentMethod;
     }
+
+
 
 
     // Getters
@@ -174,6 +185,20 @@ public class Order {
 
         public Order build() {
             return new Order(this);
+        }
+
+        public Order copy(Order order) {
+            this.orderId = order.orderId;
+            this.customerId = order.customerId;
+            this.orderDate = order.orderDate;
+            this.itemsOrdered = order.itemsOrdered;
+            this.amountPaid = order.amountPaid;
+            this.orderItems = order.orderItems;
+            this.productIds = order.productIds;
+            this.status = order.status;
+            this.deliveryAddress = order.deliveryAddress;
+            this.paymentMethod = order.paymentMethod;
+            return this.build();
         }
     }
 }
