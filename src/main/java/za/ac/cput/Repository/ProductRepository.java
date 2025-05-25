@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
- * ProductRepository.java
- * Repository implementation for 'Product'
  * Author: Mpotseng Heisi (222309792)
- * Date: 25 May 2025
  */
 public class ProductRepository implements IProductRepository {
 
