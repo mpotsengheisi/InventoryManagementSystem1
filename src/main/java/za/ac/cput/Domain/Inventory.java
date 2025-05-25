@@ -5,8 +5,14 @@ Author: Luhlume Iarlaith Keamogetse Radebe (222804424)
 Date:
  */
 
-public class Inventory {
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "inventory")
+public class Inventory {
+    // Attributes
+    @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String inventoryId; // Unique identifier for Inventory
     private String productId;
     private String productName;
